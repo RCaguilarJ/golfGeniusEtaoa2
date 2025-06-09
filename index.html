@@ -6,64 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Golf Genius</title>
     <link rel="stylesheet" href="css/style.css">
+    <title>Golf Genius</title>
 </head>
 
 <body class="p-4">
 
     <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered text-center align-middle" id="tabla-torneo">
             <thead>
                 <tr>
-                    <th class="fixed-col">PRIOR</th>
-                    <th class="fixed-col">HOLE</th>
+                    <th class="fila1">PRIOR</th>
+                    <th class="fila1">HOLE</th>
                     <!-- Hoyos del 1 al 18 -->
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>8</th>
-                    <th>9</th>
-                    <th>10</th>
-                    <th>11</th>
-                    <th>12</th>
-                    <th>13</th>
-                    <th>14</th>
-                    <th>15</th>
-                    <th>16</th>
-                    <th>17</th>
-                    <th>18</th>
+                    <th class="fila1">1</th>
+                    <th class="fila1">2</th>
+                    <th class="fila1">3</th>
+                    <th class="fila1">4</th>
+                    <th class="fila1">5</th>
+                    <th class="fila1">6</th>
+                    <th class="fila1">7</th>
+                    <th class="fila1">8</th>
+                    <th class="fila1">9</th>
+                    <th class="fila1">10</th>
+                    <th class="fila1">11</th>
+                    <th class="fila1">12</th>
+                    <th class="fila1">13</th>
+                    <th class="fila1">14</th>
+                    <th class="fila1">15</th>
+                    <th class="fila1">16</th>
+                    <th class="fila1">17</th>
+                    <th class="fila1">18</th>
                 </tr>
             </thead>
-            <thead>
+            <thead id="fila-par">
                 <tr>
-                    <th></th>
-                    <th class="fixed-col">PAR</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th class="fila1"></th>
+                    <th class="fila2">PAR</th>
+                    <!-- Celdas de par se insertarán aquí -->
                 </tr>
             </thead>
+            <tbody id="tabla-jugadores">
+                <!-- Aquí se insertarán los jugadores -->
+            </tbody>
         </table>
+
     </div>
     <script src="js/script.js"></script>
 </body>
