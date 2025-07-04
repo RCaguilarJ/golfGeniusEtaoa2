@@ -1,43 +1,73 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const API_URL = "api/fetch_gg_data.php"; // <-- cambio aquí
+// js/script.js
 
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Respuesta de la API:", data);
-            if (!Array.isArray(data)) {
-                throw new Error("La respuesta no es un array como se esperaba.");
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const res = await fetch("api/api.php");
+        const data = await res.json();
+
+        const jugadores = [];
+        const parFila = [];
+
+        // Recorremos los grupos de jugadores
+        data.forEach(group => {
+            if (!group.pairing_group || !group.pairing_group.players) return;
+
+            group.pairing_group.players.forEach(jugador => {
+                const nombre = `${jugador.last_name}, ${jugador.first_name.charAt(0)}.`;
+                const scores = jugador.score_array || [];
+                const par = jugador.tee?.hole_data?.par || [];
+                const posicion = jugador.position ?? "-";
+
+                // Guardamos solo una vez el PAR
+                if (parFila.length === 0) {
+                    parFila.push(...par);
+                }
+
+                // Calcular total y vs par
+                const total = scores.reduce((sum, val) => sum + (val || 0), 0);
+                const totalPar = par.reduce((sum, val) => sum + val, 0);
+                const vsPar = total - totalPar;
+                const vsParStr = vsPar > 0 ? `+${vsPar}` : `${vsPar}`;
+
+                jugadores.push({ posicion, nombre, scores, vsPar: vsParStr });
+            });
+        });
+
+        // Inyectamos PAR
+        const filaPar = document.querySelector("#fila-par tr");
+        for (let i = 0; i < 18; i++) {
+            const th = document.createElement("th");
+            th.classList.add("fila2");
+            th.textContent = parFila[i] || "-";
+            filaPar.appendChild(th);
+        }
+
+        // Inyectamos jugadores
+        const tbody = document.getElementById("tabla-jugadores");
+        jugadores.forEach(j => {
+            const tr = document.createElement("tr");
+
+            // Posición
+            const tdPos = document.createElement("td");
+            tdPos.textContent = j.posicion;
+            tr.appendChild(tdPos);
+
+            // Nombre
+            const tdNombre = document.createElement("td");
+            tdNombre.textContent = j.nombre;
+            tr.appendChild(tdNombre);
+
+            // Scores por hoyo
+            for (let i = 0; i < 18; i++) {
+                const td = document.createElement("td");
+                td.textContent = j.scores[i] ?? "-";
+                tr.appendChild(td);
             }
 
-            const filaPar = document.querySelector("#fila-par tr");
-            const cuerpoJugadores = document.querySelector("#tabla-jugadores");
-
-            data.forEach((grupo, index) => {
-                const jugadores = grupo.pairing_group?.players;
-                if (Array.isArray(jugadores) && jugadores.length > 0) {
-                    const jugador = jugadores[0];
-
-                    if (index === 0 && jugador.tee?.hole_data?.par) {
-                        jugador.tee.hole_data.par.forEach(valor => {
-                            const td = document.createElement("td");
-                            td.textContent = valor;
-                            filaPar.appendChild(td);
-                        });
-                    }
-
-                    jugadores.forEach(jugador => {
-                        const fila = document.createElement("tr");
-                        fila.innerHTML = `
-                            <td>${jugador.position || "-"}</td>
-                            <td>${jugador.last_name || "-"}</td>
-                            ${jugador.score_array.slice(0, 18).map(score => `<td>${score ?? ''}</td>`).join('')}
-                        `;
-                        cuerpoJugadores.appendChild(fila);
-                    });
-                }
-            });
-        })
-        .catch(error => {
-            console.error("Error al cargar datos de la API:", error);
+            // Agregamos fila
+            tbody.appendChild(tr);
         });
+    } catch (err) {
+        console.error("Error al cargar datos:", err);
+    }
 });
