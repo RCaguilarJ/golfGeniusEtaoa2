@@ -75,6 +75,206 @@ body {
   cursor: pointer;
 }
 
+/* 🎯 Player Details Expandable Styles */
+.player-clickable {
+  transition: background-color 0.2s ease;
+}
+
+.player-clickable:hover {
+  background-color: #e3f2fd !important;
+}
+
+tr.expanded {
+  background-color: #e8f5e8 !important;
+}
+
+.player-detail-row {
+  background-color: #f8f9fa !important;
+}
+
+.player-details {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* 📅 Round Selector Tabs */
+.round-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.round-tab {
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: #495057;
+}
+
+.round-tab:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.round-tab.active {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+/* 📊 Scorecard Styles */
+.scorecard-container {
+  overflow-x: auto;
+}
+
+.scorecard-header h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.scorecard-table th {
+  background-color: #495057;
+  color: white;
+  padding: 8px 6px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #343a40;
+}
+
+.scorecard-table td {
+  padding: 8px 6px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: white;
+}
+
+.player-name-cell {
+  background-color: #f8f9fa !important;
+  font-weight: 600;
+  text-align: left !important;
+  padding-left: 12px !important;
+}
+
+.score-cell {
+  background-color: #fff;
+  font-weight: 500;
+}
+
+.out-column, .in-column {
+  background-color: #e9ecef !important;
+  font-weight: bold;
+  color: #000000 !important;
+}
+
+.out-total, .in-total {
+  background-color: #e9ecef !important;
+  font-weight: bold;
+}
+
+.total-column {
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+.grand-total {
+  background-color: #007bff !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* 🏌️‍♂️ Golf Score Colors - Basado en la imagen */
+.score-cell.eagle {
+  background-color: #2e7d32 !important; /* Verde oscuro para Eagle */
+  color: white !important;
+  font-weight: bold;
+}
+
+.score-cell.birdie {
+  background-color: #66bb6a !important; /* Verde claro para Birdie */
+  color: white !important;
+  font-weight: bold;
+}
+
+.score-cell.par {
+  background-color: #ffffff !important; /* Blanco para Par */
+  color: #000 !important;
+}
+
+.score-cell.bogey {
+  background-color: #ffcc80 !important; /* Naranja claro para Bogey */
+  color: #000 !important;
+  font-weight: bold;
+}
+
+.score-cell.double-bogey {
+  background-color: #ff8a65 !important; /* Naranja oscuro para Double Bogey+ */
+  color: white !important;
+  font-weight: bold;
+}
+
+/* 📊 Legend Styles */
+.legend {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+
+.legend-color.eagle {
+  background-color: #2e7d32;
+}
+
+.legend-color.birdie {
+  background-color: #66bb6a;
+}
+
+.legend-color.par {
+  background-color: #ffffff;
+}
+
+.legend-color.bogey {
+  background-color: #ffcc80;
+}
+
+.legend-color.double-bogey {
+  background-color: #ff8a65;
+}
+
 /* 📱 Responsive adjustments */
 @media (max-width: 768px) {
   .table th,
@@ -89,5 +289,27 @@ body {
 
   #tabla-jugadores td small {
     font-size: 0.65rem;
+  }
+
+  .round-tabs {
+    justify-content: center;
+  }
+  
+  .round-tab {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .scorecard-table {
+    font-size: 0.75rem;
+  }
+  
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 4px 3px;
+  }
+  
+  .player-name-cell {
+    padding-left: 8px !important;
   }
 }

@@ -1,8 +1,28 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
+
+// Ensure JSON output
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
+
+// Capture any fatal errors and output as JSON
+register_shutdown_function(function() {
+    $error = error_get_last();
+    if ($error !== NULL && $error['type'] === E_ERROR) {
+        echo json_encode([
+            'error' => 'PHP Fatal Error: ' . $error['message'],
+            'file' => $error['file'],
+            'line' => $error['line']
+        ]);
+    }
+});
+
+try {
 
 // Load environment variables
 $envFile = '../.env';
@@ -10,7 +30,8 @@ $apiKey = '';
 
 if (file_exists($envFile)) {
     $envContent = file_get_contents($envFile);
-    if (preg_match('/API_KEY=(.+)/', $envContent, $matches)) {
+    // Handle Windows line endings and trim whitespace
+    if (preg_match('/API_KEY\s*=\s*(.+?)[\r\n]*$/m', $envContent, $matches)) {
         $apiKey = trim($matches[1]);
     }
 }
@@ -22,7 +43,7 @@ if (empty($apiKey)) {
 
 // Using the correct URL structure based on your Golf Genius account
 $eventId = '10733818833262361649';
-$roundId = '10733997704590933397';
+$roundId = '10733997716737637783';
 $tournamentId = '11025765214984354975';
 
 // Try different endpoint patterns with the correct structure
@@ -113,6 +134,8 @@ if (isset($data['event'])) {
                     
                     // Extraer scores por ronda desde la estructura 'rounds'
                     $roundScores = [];
+                    $roundHoleScores = [];
+                    
                     if (isset($aggregate['rounds']) && is_array($aggregate['rounds'])) {
                         // Ordenar las rondas por nombre (R1, R2, R3)
                         usort($aggregate['rounds'], function($a, $b) {
@@ -126,28 +149,62 @@ if (isset($data['event'])) {
                         }
                     }
                     
+                    // Obtener scores por hoyo para cada ronda
+                    // Crear un mapa de ID de ronda a datos de hoyo
+                    $roundHoleMap = [];
+                    
+                    // Procesar rondas anteriores
+                    if (isset($aggregate['previous_rounds_scores']) && is_array($aggregate['previous_rounds_scores'])) {
+                        foreach ($aggregate['previous_rounds_scores'] as $roundData) {
+                            if (isset($roundData['round_id']) && isset($roundData['gross_scores'])) {
+                                $roundHoleMap[$roundData['round_id']] = $roundData['gross_scores'];
+                            }
+                        }
+                    }
+                    
+                    // La ronda actual está en el nivel superior
+                    if (isset($aggregate['gross_scores'])) {
+                        // Buscar el ID de la ronda actual (última ronda en el array de rounds)
+                        $currentRoundId = null;
+                        if (isset($aggregate['rounds']) && count($aggregate['rounds']) > 0) {
+                            $rounds = $aggregate['rounds'];
+                            $lastRound = $rounds[count($rounds) - 1];
+                            $currentRoundId = $lastRound['id'];
+                        }
+                        if ($currentRoundId) {
+                            $roundHoleMap[$currentRoundId] = $aggregate['gross_scores'];
+                        }
+                    }
+                    
+                    // Ordenar los hole scores según el orden de las rondas
+                    $roundHoleScores = [];
+                    if (isset($aggregate['rounds']) && is_array($aggregate['rounds'])) {
+                        foreach ($aggregate['rounds'] as $round) {
+                            if (isset($roundHoleMap[$round['id']])) {
+                                $roundHoleScores[] = $roundHoleMap[$round['id']];
+                            } else {
+                                // Si no tenemos datos de hoyos para esta ronda, agregar array vacío
+                                $roundHoleScores[] = [];
+                            }
+                        }
+                    }
+                    
                     // Asegurar que tenemos exactamente 3 rondas (R1, R2, R3)
                     while (count($roundScores) < 3) {
                         $roundScores[] = "-";
                     }
                     
+                    // Asegurar que tenemos exactamente 3 conjuntos de hole scores
+                    while (count($roundHoleScores) < 3) {
+                        $roundHoleScores[] = [];
+                    }
+                    
                     // Solo tomar las primeras 3 rondas
                     $roundScores = array_slice($roundScores, 0, 3);
+                    $roundHoleScores = array_slice($roundHoleScores, 0, 3);
                     
-                    // Calcular el score total solo si todas las rondas están completas
-                    $totalScore = 0;
-                    $hasCompleteRounds = true;
-                    foreach ($roundScores as $score) {
-                        if ($score === "-") {
-                            $hasCompleteRounds = false;
-                            break;
-                        }
-                        $totalScore += $score;
-                    }
-                    
-                    if (!$hasCompleteRounds) {
-                        $totalScore = isset($aggregate['total']) ? intval($aggregate['total']) : 0;
-                    }
+                    // Usar el total oficial de la API en lugar de calcular manualmente
+                    $totalScore = isset($aggregate['total']) ? intval($aggregate['total']) : 0;
                     
                     // Crear estructura compatible
                     $player = [
@@ -156,6 +213,7 @@ if (isset($data['event'])) {
                         'position' => $aggregate['position'] ?? '-',
                         'score_array' => array_fill(0, 18, null), // Scores por hoyo (no disponibles)
                         'round_scores' => $roundScores, // Scores por ronda [R1, R2, R3]
+                        'round_hole_scores' => $roundHoleScores, // Scores por hoyo para cada ronda
                         'total_score' => $totalScore,
                         'vs_par' => $aggregate['score'] ?? '0',
                         'affiliation' => $aggregate['affiliation'] ?? ''
@@ -216,3 +274,18 @@ if (isset($data['event'])) {
     
     echo json_encode($mockData);
 }
+
+} catch (Exception $e) {
+    echo json_encode([
+        'error' => 'Exception: ' . $e->getMessage(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine()
+    ]);
+} catch (Error $e) {
+    echo json_encode([
+        'error' => 'Error: ' . $e->getMessage(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine()
+    ]);
+}
+?>
