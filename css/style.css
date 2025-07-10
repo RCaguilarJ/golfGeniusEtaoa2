@@ -1,14 +1,93 @@
-.fila1{
-    background-color: #192c5c !important;
-    color: white;
+/* 🧱 General layout */
+body {
+  background-color: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
 }
 
-.fila2 {
-    background-color: #273d75 !important;
-    color: white;
+/* 📦 Table container */
+.table-responsive {
+  margin-top: 30px;
+  border-radius: 6px;
+  overflow-x: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  background-color: #ffffff;
+  padding: 8px;
 }
 
-#fila-par {
-    background-color: #273d75 !important;
-    color: white;
+/* 🏁 Table header */
+.fila1 {
+  background-color: #3F3E44 !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* 📊 Table cells */
+.table td {
+  font-size: 0.88rem;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  vertical-align: middle;
+  background-color: #ffffff;
+}
+
+/* 👤 Player column left-aligned */
+#tabla-jugadores td:nth-child(2) {
+  text-align: left;
+}
+
+/* 🏌️ Affiliation small text */
+#tabla-jugadores td small {
+  display: block;
+  font-size: 0.72rem;
+  color: #6c757d;
+  margin-top: 3px;
+}
+
+/* ⭐ Icon next to player name */
+.star-icon {
+  color: #f4bf3c;
+  margin-right: 6px;
+  font-size: 1rem;
+}
+
+/* 🔢 Center other columns */
+#tabla-jugadores td:not(:nth-child(2)) {
+  text-align: center;
+}
+
+/* 🪶 Row striping */
+#tabla-jugadores tr:nth-child(even) {
+  background-color: #fafafa;
+}
+#tabla-jugadores tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* 🖱️ Hover effect */
+#tabla-jugadores tr:hover {
+  background-color: #e9f0f6;
+  cursor: pointer;
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: 8px 6px;
+    font-size: 0.80rem;
+  }
+
+  .fila1 {
+    font-size: 0.75rem;
+  }
+
+  #tabla-jugadores td small {
+    font-size: 0.65rem;
+  }
 }
