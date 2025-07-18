@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Golf Genius</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     .scorecard-table th,
     .scorecard-table td {
@@ -21,33 +21,34 @@
 </head>
 <body>
   <div class="container py-4">
-    <div class="mb-3">
-      <label for="round-select" class="form-label">Select Round</label>
-      <select id="round-select" class="form-select">
-        <option value="0">Round 1 (Thu, October 17)</option>
-        <option value="1">Round 2 (Fri, October 18)</option>
-        <option value="2">Round 3 (Sat, October 19)</option>
-      </select>
-    </div>
-
-    <div class="table-responsive">
-      <table class="table table-bordered text-center align-middle scorecard-table">
-        <thead>
-          <tr>
-            <th rowspan="2">POS.</th>
-            <th rowspan="2">PLAYER</th>
-            <th rowspan="2">UNDER</th>
-            <th colspan="18">HOLES</th>
-            <th rowspan="2">TOTAL</th>
-          </tr>
-          <tr>
-            <!-- ${[...Array(18).keys()].map(i => `<th>${i + 1}</th>`).join('')} -->
-          </tr>
-        </thead>
-        <tbody id="tabla-jugadores">
-          <!-- JS injects rows here -->
-        </tbody>
-      </table>
+    <div class="container-fluid">
+      <div class="round-selector-container" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <label for="round-select" style="font-weight:600;font-size:1.1rem;color:#2c3e50;">Ronda:</label>
+        <select id="round-select" style="border-radius:8px;padding:8px 16px;font-size:1rem;font-weight:500;background:#f8f9fa;border:2px solid #2c5aa0;min-width:120px;transition:border-color 0.2s;">
+          <option value="0">Ronda 1</option>
+          <option value="1">Ronda 2</option>
+          <option value="2">Ronda 3</option>
+        </select>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center align-middle scorecard-table">
+          <thead>
+            <tr>
+              <th rowspan="2">POS.</th>
+              <th rowspan="2">PLAYER</th>
+              <th rowspan="2">UNDER</th>
+              <th colspan="18">HOLES</th>
+              <th rowspan="2">TOTAL</th>
+            </tr>
+            <tr>
+              <!-- ${[...Array(18).keys()].map(i => `<th>${i + 1}</th>`).join('')} -->
+            </tr>
+          </thead>
+          <tbody id="tabla-jugadores">
+            <!-- JS injects rows here -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
