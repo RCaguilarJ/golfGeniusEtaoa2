@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Golf Genius</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golf Genius</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .scorecard-table th,
+    .scorecard-table td {
+      padding: 4px;
+      font-size: 14px;
+    }
+    .eagle { background-color: #ffd700; }  /* Dorado */
+    .birdie { background-color: #90ee90; } /* Verde claro */
+    .par { background-color: #d3d3d3; }    /* Gris */
+    .bogey { background-color: #ffcccb; }  /* Rosa */
+    .double-bogey { background-color: #f08080; } /* Rojo claro */
+  </style>
 </head>
-
-<body class="p-4">
-
-    <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
-            <thead>
-                <tr>
-                    <th class="fila1">Pos.</th>
-                    <th class="fila1">Player</th>
-                    <th class="fila1">Total To Par</th>
-                    <th class="fila1">R1</th>
-                    <th class="fila1">R2</th>
-                    <th class="fila1">R3</th>
-                    <th class="fila1">Total Gross</th>
-                </tr>
-            </thead>
-            <tbody id="tabla-jugadores">
-                <!-- se inyectan aquí las filas de jugadores -->
-            </tbody>
-        </table>
+<body>
+  <div class="container py-4">
+    <div class="mb-3">
+      <label for="round-select" class="form-label">Select Round</label>
+      <select id="round-select" class="form-select">
+        <option value="0">Round 1 (Thu, October 17)</option>
+        <option value="1">Round 2 (Fri, October 18)</option>
+        <option value="2">Round 3 (Sat, October 19)</option>
+      </select>
     </div>
 
-    <script src="js/script.js"></script>
-</body>
+    <div class="table-responsive">
+      <table class="table table-bordered text-center align-middle scorecard-table">
+        <thead>
+          <tr>
+            <th rowspan="2">POS.</th>
+            <th rowspan="2">PLAYER</th>
+            <th rowspan="2">UNDER</th>
+            <th colspan="18">HOLES</th>
+            <th rowspan="2">TOTAL</th>
+          </tr>
+          <tr>
+            <!-- ${[...Array(18).keys()].map(i => `<th>${i + 1}</th>`).join('')} -->
+          </tr>
+        </thead>
+        <tbody id="tabla-jugadores">
+          <!-- JS injects rows here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <script src="js/script.js"></script>
+</body>
 </html>
