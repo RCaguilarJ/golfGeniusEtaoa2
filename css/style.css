@@ -1,459 +1,40 @@
-/* 🧱 General layout */
+/* 🧱 Layout general */
 body {
-  background-color: #f4f4f4;
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
   margin: 0;
-  padding: 0;
-}
-
-/* 📦 Table container */
-.table-responsive {
-  margin-top: 0;
-  border-radius: 6px;
-  overflow-x: auto;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  background-color: #ffffff;
-  padding: 8px;
-}
-
-/* 🏁 Table header */
-.fila1 {
-  background-color: #3F3E44 !important;
-  color: white !important;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 10px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-/* 📊 Table cells */
-.table td {
-  font-size: 0.88rem;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  vertical-align: middle;
-  background-color: #ffffff;
-}
-
-/* 👤 Player column left-aligned */
-#tabla-jugadores td:nth-child(2) {
-  text-align: left;
-}
-
-/* 🏌️ Affiliation small text */
-#tabla-jugadores td small {
-  display: block;
-  font-size: 0.72rem;
-  color: #6c757d;
-  margin-top: 3px;
-}
-
-/* ⭐ Icon next to player name */
-.star-icon {
-  color: #f4bf3c;
-  margin-right: 6px;
-  font-size: 1rem;
-}
-
-/* 🔢 Center other columns */
-#tabla-jugadores td:not(:nth-child(2)) {
-  text-align: center;
-}
-
-/* 🪶 Row striping */
-#tabla-jugadores tr:nth-child(even) {
-  background-color: #fafafa;
-}
-#tabla-jugadores tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-/* 🖱️ Hover effect */
-#tabla-jugadores tr:hover {
-  background-color: #e9f0f6;
-  cursor: pointer;
-}
-
-/* 🎯 Player Details Expandable Styles */
-.player-clickable {
-  transition: background-color 0.2s ease;
-}
-
-.player-clickable:hover {
-  background-color: #e3f2fd !important;
-}
-
-tr.expanded {
-  background-color: #e8f5e8 !important;
-}
-
-.player-detail-row {
-  background-color: #f8f9fa !important;
-}
-
-.player-details {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-/* 📅 Round Selector Tabs */
-.round-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.round-tab {
-  background-color: #fff;
-  border: 2px solid #dee2e6;
-  border-radius: 5px;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  color: #495057;
-}
-
-.round-tab:hover {
-  background-color: #e9ecef;
-  border-color: #adb5bd;
-}
-
-.round-tab.active {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-}
-
-/* 📊 Scorecard Styles */
-.scorecard-container {
-  overflow-x: auto;
-}
-
-.scorecard-header h4 {
-  margin: 0 0 15px 0;
-  color: #495057;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.scorecard-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  background-color: white;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.scorecard-table th {
-  background-color: #495057;
-  color: white;
-  padding: 8px 6px;
-  text-align: center;
-  font-weight: 600;
-  border: 1px solid #343a40;
-}
-
-.scorecard-table td {
-  padding: 8px 6px;
-  text-align: center;
-  border: 1px solid #dee2e6;
-  background-color: white;
-}
-
-.player-name-cell {
-  background-color: #f8f9fa !important;
-  font-weight: 600;
-  text-align: left !important;
-  padding-left: 12px !important;
-}
-
-.score-cell {
-  background-color: #fff;
-  font-weight: 500;
-}
-
-.out-column, .in-column {
-  background-color: #e9ecef !important;
-  font-weight: bold;
-  color: #000000 !important;
-}
-
-.out-total, .in-total {
-  background-color: #e9ecef !important;
-  font-weight: bold;
-}
-
-.total-column {
-  background-color: #007bff !important;
-  color: white !important;
-}
-
-.grand-total {
-  background-color: #007bff !important;
-  color: white !important;
-  font-weight: bold;
-  font-size: 0.95rem;
-}
-
-/* 🏌️‍♂️ Golf Score Colors - Basado en la imagen */
-.score-cell.eagle {
-  background-color: #2e7d32 !important; /* Verde oscuro para Eagle */
-  color: white !important;
-  font-weight: bold;
-}
-
-.score-cell.birdie {
-  background-color: #66bb6a !important; /* Verde claro para Birdie */
-  color: white !important;
-  font-weight: bold;
-}
-
-.score-cell.par {
-  background-color: #ffffff !important; /* Blanco para Par */
-  color: #000 !important;
-}
-
-.score-cell.bogey {
-  background-color: #ffcc80 !important; /* Naranja claro para Bogey */
-  color: #000 !important;
-  font-weight: bold;
-}
-
-.score-cell.double-bogey {
-  background-color: #ff8a65 !important; /* Naranja oscuro para Double Bogey+ */
-  color: white !important;
-  font-weight: bold;
-}
-
-/* 📊 Legend Styles */
-.legend {
-  margin-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  font-size: 0.85rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.legend-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  display: inline-block;
-  border: 1px solid #ddd;
-}
-
-.legend-color.eagle {
-  background-color: #2e7d32;
-}
-
-.legend-color.birdie {
-  background-color: #66bb6a;
-}
-
-.legend-color.par {
-  background-color: #ffffff;
-}
-
-.legend-color.bogey {
-  background-color: #ffcc80;
-}
-
-.legend-color.double-bogey {
-  background-color: #ff8a65;
-}
-
-/* 📱 Responsive adjustments */
-@media (max-width: 768px) {
-  .table th,
-  .table td {
-    padding: 8px 6px;
-    font-size: 0.80rem;
-  }
-
-  .fila1 {
-    font-size: 0.75rem;
-  }
-
-  #tabla-jugadores td small {
-    font-size: 0.65rem;
-  }
-
-  .round-tabs {
-    justify-content: center;
-  }
-  
-  .round-tab {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-  
-  .scorecard-table {
-    font-size: 0.75rem;
-  }
-  
-  .scorecard-table th,
-  .scorecard-table td {
-    padding: 4px 3px;
-  }
-  
-  .player-name-cell {
-    padding-left: 8px !important;
-  }
-}
-body {
-  background-color: #f8f9fa;
+  padding-top: 88px;
   font-family: 'Segoe UI', sans-serif;
-}
-
-.container {
-  max-width: 1300px;
-  margin: auto;
-}
-
-.table-responsive {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
-}
-
-.scorecard-table thead tr:first-child th {
-  background: linear-gradient(to right, #3a445d, #2a2e40);
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.scorecard-table thead tr:nth-child(2) th {
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
   color: #333;
-  font-weight: 500;
 }
 
-.scorecard-table th,
-.scorecard-table td {
-  padding: 10px 8px;
-  text-align: center;
-  font-size: 14px;
-  vertical-align: middle;
-}
-
-.scorecard-table tbody tr {
-  background-color: #fff;
-  border-bottom: 1px solid #dee2e6;
-  transition: background-color 0.2s;
-}
-
-.scorecard-table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-.scorecard-table .out-total,
-.scorecard-table .in-total,
-.scorecard-table .grand-total {
-  font-weight: 600;
-  background-color: #eef0f4;
-}
-
-.round-tabs {
-  margin-bottom: 10px;
-}
-
-.round-tab {
-  border: none;
-  background-color: #e9ecef;
-  color: #333;
-  padding: 6px 12px;
-  border-radius: 4px;
-  margin-right: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.round-tab.active {
-  background-color: #007bff;
-  color: #fff;
-  font-weight: 600;
-}
-
-.score-cell.eagle {
-  background-color: #ffd700; /* dorado */
-  font-weight: bold;
-}
-.score-cell.birdie {
-  background-color: #c2f0c2; /* verde claro */
-}
-.score-cell.par {
-  background-color: #e6e6e6;
-}
-.score-cell.bogey {
-  background-color: #fbcaca;
-}
-.score-cell.double-bogey {
-  background-color: #f08080;
-}
-
-.legend {
-  margin-top: 12px;
-  font-size: 13px;
-}
-.legend-item {
-  margin-right: 12px;
-  display: inline-flex;
-  align-items: center;
-}
-.legend-color {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  margin-right: 6px;
-  border-radius: 3px;
-}
-.legend-color.eagle {
-  background-color: #ffd700;
-}
-.legend-color.birdie {
-  background-color: #c2f0c2;
-}
-.legend-color.par {
-  background-color: #e6e6e6;
-}
-.legend-color.bogey {
-  background-color: #fbcaca;
-}
-.legend-color.double-bogey {
-  background-color: #f08080;
-}
-
-/* Estilo mejorado para el selector de ronda */
+/* 📅 Selector de ronda */
 .round-selector-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .round-selector-container {
+    justify-content: center;
+    padding: 12px 8px;
+  }
 }
 
 .round-selector-container label {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #2c3e50;
-  margin-right: 6px;
 }
 
 #round-select {
@@ -478,13 +59,137 @@ body {
   background: #eef6fa;
 }
 
-@media (max-width: 600px) {
-  .round-selector-container label {
-    font-size: 0.95rem;
+/* 📦 Contenedor principal */
+.container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🧭 Envoltura de tabla con scroll */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  padding: 12px;
+}
+
+/* 📊 Estructura de tabla */
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.85rem;
+}
+
+/* 🧠 Encabezados */
+.scorecard-table thead th {
+  background-color: #3F3E44;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 6px 4px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* 🔢 Columnas clave */
+.scorecard-table td:nth-child(1),
+.scorecard-table td:nth-child(3),
+.scorecard-table td:nth-child(22),
+.scorecard-table th:nth-child(1),
+.scorecard-table th:nth-child(3),
+.scorecard-table th:nth-child(22) {
+  text-align: center;
+  min-width: 60px;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.75rem;
+}
+
+/* 👤 PLAYER */
+.scorecard-table td:nth-child(2),
+.scorecard-table th:nth-child(2) {
+  text-align: left;
+  font-weight: 600;
+  min-width: 130px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+/* 🕳️ HOLES (1–18) con ancho fijo */
+.scorecard-table td:nth-child(n+4):nth-child(-n+21),
+.scorecard-table th:nth-child(n+4):nth-child(-n+21) {
+  width: 38px;
+  min-width: 38px;
+  max-width: 42px;
+  padding: 6px 2px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+
+/* 🖱️ Efecto hover */
+.scorecard-table tbody tr:hover {
+  background-color: #e9f0f6;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* 📱 Ajuste mobile */
+@media screen and (max-width: 500px) {
+  body {
+    padding-top: 96px;
   }
+
+  .scorecard-table {
+    font-size: 0.72rem;
+  }
+
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 4px 2px;
+  }
+
+  .scorecard-table td:nth-child(2),
+  .scorecard-table th:nth-child(2) {
+    min-width: 100px;
+    font-size: 0.7rem;
+  }
+
+  .scorecard-table td:nth-child(n+4):nth-child(-n+21),
+  .scorecard-table th:nth-child(n+4):nth-child(-n+21) {
+    min-width: 28px;
+    font-size: 0.65rem;
+  }
+
+  .scorecard-table td:nth-child(22),
+  .scorecard-table th:nth-child(22) {
+    min-width: 64px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
   #round-select {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding: 6px 10px;
-    min-width: 90px;
+    min-width: 100px;
+  }
+
+  .round-selector-container label {
+    font-size: 0.85rem;
   }
 }

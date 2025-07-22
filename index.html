@@ -1,54 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Golf Genius</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    .scorecard-table th,
-    .scorecard-table td {
-      padding: 4px;
-      font-size: 14px;
-    }
-    .eagle { background-color: #ffd700; }  /* Dorado */
-    .birdie { background-color: #90ee90; } /* Verde claro */
-    .par { background-color: #d3d3d3; }    /* Gris */
-    .bogey { background-color: #ffcccb; }  /* Rosa */
-    .double-bogey { background-color: #f08080; } /* Rojo claro */
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados por Ronda</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container py-4">
-    <div class="container-fluid">
-      <div class="round-selector-container" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <label for="round-select" style="font-weight:600;font-size:1.1rem;color:#2c3e50;">Ronduns:</label>
-        <select id="round-select" style="border-radius:8px;padding:8px 16px;font-size:1rem;font-weight:500;background:#f8f9fa;border:2px solid #2c5aa0;min-width:120px;transition:border-color 0.2s;">
-          <option value="0">Round 1</option>
-          <option value="1">Round2</option>
-          <option value="2">Round 3</option>
-        </select>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle scorecard-table">
-          <thead>
-            <tr>
-              <th rowspan="2">POS.</th>
-              <th rowspan="2">PLAYER</th>
-              <th rowspan="2">UNDER</th>
-              <th colspan="18">HOLES</th>
-              <th rowspan="2">TOTAL</th>
-            </tr>
-            <tr>
-              <!-- ${[...Array(18).keys()].map(i => `<th>${i + 1}</th>`).join('')} -->
-            </tr>
-          </thead>
-          <tbody id="tabla-jugadores">
-            <!-- JS injects rows here -->
-          </tbody>
-        </table>
-      </div>
+  <!-- 📅 Selector de ronda -->
+  <div class="round-selector-container">
+    <select id="round-select">
+      <option value="10733997704590933397">Round 3 (Sat, October 19)</option>
+      <option value="10733997711201156502">Round 2 (Fri, October 18)</option>
+      <option value="10733997716737637783">Round 1(Thu, October 17)</option>
+    </select>
+  </div>
+
+  <!-- 📊 Tabla de jugadores -->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="scorecard-table">
+        <thead>
+          <tr>
+            <th>POS</th>
+            <th>PLAYER</th>
+            <th>UNDER</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+            <th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-jugadores">
+          <!-- Se llenará desde script.js -->
+        </tbody>
+      </table>
     </div>
   </div>
 
