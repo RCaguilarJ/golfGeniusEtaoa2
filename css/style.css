@@ -1,3 +1,69 @@
+/* 📱 Responsive: 800px and below */
+@media (max-width: 800px) {
+  .scorecard-table {
+    font-size: 0.60rem;
+  }
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 2px 1px;
+    font-size: 0.60rem;
+    min-width: 22px;
+    max-width: 32px;
+  }
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 18px;
+    max-width: 24px;
+  }
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 40px;
+    max-width: 60px;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    padding: 2px 0px;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* 📱 Responsive: 500px and below */
+@media (max-width: 500px) {
+  .scorecard-table {
+    font-size: 0.50rem;
+  }
+  
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 1px 0px;
+    font-size: 0.50rem;
+    min-width: 16px;
+    max-width: 22px;
+  }
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 12px;
+    max-width: 16px;
+
+
+  }
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 24px;
+    max-width: 36px;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.55rem;
+    letter-spacing: 0.5px;
+    padding: 1px 0px;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
 /* 🧱 General layout */
 body {
   background-color: #f4f4f4;
@@ -220,8 +286,9 @@ body {
 }
 
 .container {
-  max-width: 1300px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .table-responsive {
@@ -244,19 +311,16 @@ body {
   font-weight: 500;
 }
 
-.scorecard-table th,
-.scorecard-table td {
-  padding: 10px 8px;
-  text-align: center;
-  font-size: 14px;
-  vertical-align: middle;
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.scorecard-table tbody tr {
-  background-color: #fff;
-  border-bottom: 1px solid #dee2e6;
-  transition: background-color 0.2s;
-}
 
 .scorecard-table tbody tr:hover {
   background-color: #f1f1f1;
@@ -303,7 +367,7 @@ body {
 
 #round-select {
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 10px 16px 8px 13px;
   font-size: 1rem;
   font-weight: 500;
   background: #f8f9fa;
@@ -311,6 +375,9 @@ body {
   min-width: 120px;
   transition: border-color 0.2s;
   outline: none;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #round-select:focus {
