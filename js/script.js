@@ -46,18 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
       tdName.textContent = `${player.last_name}, ${player.first_name}`;
       tr.appendChild(tdName);
 
-      // UNDER
-      const tdUnder = document.createElement("td");
-      tdUnder.textContent = player.vs_par ?? "-";
-      tr.appendChild(tdUnder);
-
       // HOLES 1–18
       const scores = player.round_hole_scores ?? [];
       for (let i = 0; i < 18; i++) {
         const td = document.createElement("td");
         td.textContent = scores[i] !== undefined ? scores[i] : "-";
         tr.appendChild(td);
-      }
+     }
+
+      // UNDER
+      const tdUnder = document.createElement("td");
+      tdUnder.textContent = player.vs_par ?? "-";
+      tr.appendChild(tdUnder);
 
       // TOTAL
       const tdTotal = document.createElement("td");
