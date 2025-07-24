@@ -3,6 +3,10 @@
   .scorecard-table {
     font-size: 0.60rem;
   }
+  .scorecard-table tr,
+  #tabla-jugadores tr {
+    font-size: 0.60rem;
+  }
   .scorecard-table th,
   .scorecard-table td {
     padding: 2px 1px;
@@ -64,6 +68,390 @@
     overflow-x: auto;
   }
 }
+
+/* 📱 Responsive: 501px a 799px */
+@media (max-width: 799px) and (min-width: 501px) {
+  .scorecard-table,
+  .scorecard-table tr,
+  .scorecard-table th,
+  .scorecard-table td,
+  #tabla-jugadores tr,
+  #tabla-jugadores th,
+  #tabla-jugadores td {
+    font-size: 0.72rem;
+  }
+  .scorecard-table th,
+  #tabla-jugadores th {
+    font-size: 0.58rem;
+    padding: 2px 1px;
+    letter-spacing: 0.2px;
+  }
+  .scorecard-table thead tr:first-child th,
+  .scorecard-table thead tr:nth-child(2) th {
+    font-size: 0.58rem;
+    padding: 2px 1px;
+    letter-spacing: 0.2px;
+  }
+  .scorecard-table th,
+  .scorecard-table td,
+  #tabla-jugadores th,
+  #tabla-jugadores td {
+    padding: 4px 2px;
+    min-width: 20px;
+    max-width: 32px;
+  }
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child,
+  #tabla-jugadores th:first-child,
+  #tabla-jugadores td:first-child {
+    min-width: 16px;
+    max-width: 22px;
+  }
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2),
+  #tabla-jugadores th:nth-child(2),
+  #tabla-jugadores td:nth-child(2) {
+    min-width: 36px;
+    max-width: 54px;
+  }
+  /* Mantén las columnas UNDER y TOTAL visibles y con espacio suficiente */
+  .scorecard-table th:last-child,
+  .scorecard-table td:last-child,
+  .scorecard-table th:nth-last-child(2),
+  .scorecard-table td:nth-last-child(2) {
+    min-width: 28px;
+    max-width: 40px;
+    font-size: 0.72rem;
+    display: table-cell;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 4px 0px;
+  }
+  /* Reduce solo los títulos de las columnas indicadas a la mitad de su tamaño actual */
+  .scorecard-table th.pos,
+  .scorecard-table th.player,
+  .scorecard-table th.holes,
+  .scorecard-table th.under,
+  .scorecard-table th.total {
+    font-size: 0.075rem !important;
+  }
+  /* Si usas nth-child para identificar las columnas, puedes usar: */
+  /*
+  .scorecard-table th:nth-child(1),  // POS
+  .scorecard-table th:nth-child(2),  // PLAYER
+  .scorecard-table th:nth-child(3),  // HOLES
+  .scorecard-table th:nth-last-child(2), // UNDER
+  .scorecard-table th:last-child { // TOTAL
+    font-size: 0.075rem !important;
+  }
+  */
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* 📱 Responsive: 501px a 801px */
+@media (min-width: 501px) and (max-width: 801px) {
+  .scorecard-table,
+  .scorecard-table tr,
+  .scorecard-table th,
+  .scorecard-table td,
+  #tabla-jugadores tr,
+  #tabla-jugadores th,
+  #tabla-jugadores td {
+    font-size: 0.48rem !important;
+  }
+  .scorecard-table th,
+  #tabla-jugadores th {
+    font-size: 0.32rem !important;
+    padding: 1px 0.5px !important;
+    letter-spacing: 0.1px !important;
+  }
+  .scorecard-table td,
+  #tabla-jugadores td {
+    font-size: 0.48rem !important;
+    padding: 1px 0.5px !important;
+  }
+  .scorecard-table th,
+  .scorecard-table td,
+  #tabla-jugadores th,
+  #tabla-jugadores td {
+    min-width: 14px !important;
+    max-width: 22px !important;
+  }
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child,
+  #tabla-jugadores th:first-child,
+  #tabla-jugadores td:first-child {
+    min-width: 10px !important;
+    max-width: 14px !important;
+  }
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2),
+  #tabla-jugadores th:nth-child(2),
+  #tabla-jugadores td:nth-child(2) {
+    min-width: 22px !important;
+    max-width: 32px !important;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.38rem !important;
+    letter-spacing: 0.2px !important;
+    padding: 1px 0px !important;
+  }
+  /* Títulos de columnas principales aún más pequeños */
+  .scorecard-table th.pos,
+  .scorecard-table th.player,
+  .scorecard-table th.holes,
+  .scorecard-table th.under,
+  .scorecard-table th.total {
+    font-size: 0.16rem !important;
+  }
+  /* Si usas nth-child para identificar las columnas, puedes usar: */
+  /*
+  .scorecard-table th:nth-child(1),
+  .scorecard-table th:nth-child(2),
+  .scorecard-table th:nth-child(3),
+  .scorecard-table th:nth-last-child(2),
+  .scorecard-table th:last-child {
+    font-size: 0.16rem !important;
+  }
+  */
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* 📱 Responsive: 501px a 800px */
+@media (min-width: 501px) and (max-width: 800px) {
+  /* Ajusta el tamaño de fuente general de la tabla */
+  .scorecard-table,
+  .scorecard-table tr,
+  .scorecard-table th,
+  .scorecard-table td {
+    font-size: 0.62rem !important;
+  }
+  /* Títulos principales y celdas de los hoyos */
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 3px 2px !important;
+    min-width: 20px !important;
+    max-width: 28px !important;
+    text-align: center;
+    vertical-align: middle;
+  }
+  /* Primera columna (POS) */
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 22px !important;
+    max-width: 28px !important;
+    font-size: 0.62rem !important;
+    padding: 3px 2px !important;
+    text-align: center;
+  }
+  /* Segunda columna (PLAYER) */
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 70px !important;
+    max-width: 120px !important;
+    text-align: left;
+    font-size: 0.62rem !important;
+    padding: 3px 2px !important;
+  }
+  /* Tercera columna (HOLES) */
+  .scorecard-table th:nth-child(3),
+  .scorecard-table td:nth-child(3) {
+    min-width: 22px !important;
+    max-width: 28px !important;
+    text-align: center;
+    font-size: 0.62rem !important;
+    padding: 3px 2px !important;
+  }
+  /* Columnas de los hoyos (1-18) */
+  .scorecard-table th:nth-child(n+4):nth-child(-n+21),
+  .scorecard-table td:nth-child(n+4):nth-child(-n+21) {
+    min-width: 20px !important;
+    max-width: 28px !important;
+    text-align: center;
+    font-size: 0.62rem !important;
+    padding: 3px 2px !important;
+  }
+  /* UNDER y TOTAL */
+  .scorecard-table th.under,
+  .scorecard-table th.total,
+  .scorecard-table td.under,
+  .scorecard-table td.total,
+  .scorecard-table th:nth-last-child(2),
+  .scorecard-table th:last-child,
+  .scorecard-table td:nth-last-child(2),
+  .scorecard-table td:last-child {
+    min-width: 22px !important;
+    max-width: 28px !important;
+    font-size: 0.62rem !important;
+    padding: 3px 2px !important;
+    display: table-cell !important;
+    text-align: center;
+  }
+  /* Ajusta el header de los hoyos */
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 3px 0px !important;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* 📱 Responsive: 501px a 802px */
+@media (min-width: 501px) and (max-width: 802px) {
+  .scorecard-table,
+  .scorecard-table tr,
+  .scorecard-table th,
+  .scorecard-table td {
+    font-size: 0.60rem !important;
+  }
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 2px 1px !important;
+    min-width: 18px !important;
+    max-width: 26px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  /* Primera columna (POS) */
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 18px !important;
+    max-width: 22px !important;
+  }
+  /* Segunda columna (PLAYER) */
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 48px !important;
+    max-width: 80px !important;
+    text-align: left !important;
+  }
+  /* Tercera columna (HOLES) */
+  .scorecard-table th:nth-child(3),
+  .scorecard-table td:nth-child(3) {
+    min-width: 18px !important;
+    max-width: 26px !important;
+  }
+  /* Columnas de los hoyos (1-18) */
+  .scorecard-table th:nth-child(n+4):nth-child(-n+21),
+  .scorecard-table td:nth-child(n+4):nth-child(-n+21) {
+    min-width: 18px !important;
+    max-width: 26px !important;
+  }
+  /* UNDER y TOTAL */
+  .scorecard-table th.under,
+  .scorecard-table th.total,
+  .scorecard-table td.under,
+  .scorecard-table td.total,
+  .scorecard-table th:nth-last-child(2),
+  .scorecard-table th:last-child,
+  .scorecard-table td:nth-last-child(2),
+  .scorecard-table td:last-child {
+    min-width: 18px !important;
+    max-width: 26px !important;
+    display: table-cell !important;
+    text-align: center !important;
+  }
+  /* Ajuste específico para la columna HOLE 2 (si es la columna 5) */
+  .scorecard-table th:nth-child(5),
+  .scorecard-table td:nth-child(5) {
+    min-width: 18px !important;
+    max-width: 26px !important;
+    padding: 2px 1px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 2px 0px !important;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* 📱 Responsive: 500px a 640px */
+@media (min-width: 500px) and (max-width: 640px) {
+  .scorecard-table,
+  .scorecard-table tr,
+  .scorecard-table th,
+  .scorecard-table td {
+    font-size: 0.52rem !important;
+  }
+  .scorecard-table th,
+  .scorecard-table td {
+    padding: 1px 0.5px !important;
+    min-width: 14px !important;
+    max-width: 20px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  /* Primera columna (POS) */
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 14px !important;
+    max-width: 18px !important;
+  }
+  /* Segunda columna (PLAYER) */
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 32px !important;
+    max-width: 60px !important;
+    text-align: left !important;
+  }
+  /* Tercera columna (HOLES) */
+  .scorecard-table th:nth-child(3),
+  .scorecard-table td:nth-child(3) {
+    min-width: 14px !important;
+    max-width: 20px !important;
+  }
+  /* Columnas de los hoyos (1-18) */
+  .scorecard-table th:nth-child(n+4):nth-child(-n+21),
+  .scorecard-table td:nth-child(n+4):nth-child(-n+21) {
+    min-width: 14px !important;
+    max-width: 20px !important;
+  }
+  /* UNDER y TOTAL */
+  .scorecard-table th.under,
+  .scorecard-table th.total,
+  .scorecard-table td.under,
+  .scorecard-table td.total,
+  .scorecard-table th:nth-last-child(2),
+  .scorecard-table th:last-child,
+  .scorecard-table td:nth-last-child(2),
+  .scorecard-table td:last-child {
+    min-width: 14px !important;
+    max-width: 20px !important;
+    display: table-cell !important;
+    text-align: center !important;
+  }
+  /* Ajuste específico para la columna HOLE 2 (si es la columna 5) */
+  .scorecard-table th:nth-child(5),
+  .scorecard-table td:nth-child(5) {
+    min-width: 14px !important;
+    max-width: 20px !important;
+    padding: 1px 0.5px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  .scorecard-table th[colspan="18"] {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.3px !important;
+    padding: 1px 0px !important;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
 /* 🧱 General layout */
 body {
   background-color: #f4f4f4;
@@ -238,9 +626,6 @@ tr.expanded {
   font-weight: bold;
   font-size: 0.95rem;
 }
-
-
-
 
 /* 📱 Responsive adjustments */
 @media (max-width: 768px) {
