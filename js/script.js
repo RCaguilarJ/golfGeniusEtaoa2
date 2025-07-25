@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // PLAYER
       const tdName = document.createElement("td");
       tdName.textContent = `${player.last_name}, ${player.first_name}`;
+      tdName.classList.add("player-name"); 
       tr.appendChild(tdName);
 
       // HOLES 1–18
