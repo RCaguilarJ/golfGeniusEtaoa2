@@ -4,37 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resultados por Ronda</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20250807-1630" />
+  <link rel="stylesheet" href="css/fixed-columns-corrected.css?v=20250807-1730" />
 </head>
 <body>
-  <!-- 📅 Selector de ronda -->
+  <!-- 📅 Selectores dinámicos -->
   <div class="round-selector-container">
-    <select id="round-select">
-      <option value="10733997704590933397">Round 1(Thu, October 17)</option>      
-      <option value="10733997711201156502">Round 2 (Fri, October 18)</option>
-      <option value="10733997716737637783" selected> Round 3 (Sat, October 19)</option>
-    </select>
+    <!-- 🎯 Selector de Evento -->
+    <div class="selector-group">
+      <label for="event-select">Event:</label>
+      <select id="event-select">
+        <option value="">Select event...</option>
+        <option value="10733818833262361649">32nd Stocker Cup Mid-Amateur Invitational</option>
+        <option value="11689361498110442572">2025 Stocker Cup Mid-Amateur Invitational</option>
+      </select>
+    </div>
+
+    <!-- 📅 Selector de Ronda -->
+    <div class="selector-group">
+      <label for="round-select">Round:</label>
+      <select id="round-select">
+        <option value="">Seleccionar ronda...</option>
+        <option value="10733997704590933397">Round 1 (October 17, 2024)</option>      
+        <option value="10733997711201156502">Round 2 (October 18, 2024)</option>
+        <option value="10733997716737637783">Round 3 (October 19, 2024)</option>
+        <!-- <option value="11689361676989119760">Round Torneo 2</option> -->
+      </select>
+    </div>
+
+    <!-- 🏆 Selector de Torneo -->
+    <div class="selector-group">
+      <label for="tournament-select">Tournament:</label>
+      <select id="tournament-select">
+        <option value="">Select tournament...</option>
+        <option value="11025765214984354975">Stocker Cup - A</option>
+        <option value="11025769041967987875">Stocker Cup Net Team</option>
+        <option value="11025775491935124647">Stocker Cup Gross Team</option>
+        <option value="11025785490082118827">Stocker Cup Net Skins (R1)</option>
+        <option value="11025790840470518956">Stocker Cup Gross Skins (R1)</option>
+        <option value="11025792851354074285">Stocker Cup Net Skins (R2)</option>
+        <option value="11025796568748932270">Stocker Cup Gross Skins (R2)</option>
+        <option value="11025803973440322735">Stocker Cup Net Skins (R3)</option>
+        <option value="11025812243701841072">Stocker Cup Gross Skins (R3)</option>
+      </select>
+    </div>
   </div>
 
-  <!-- 📊 Tabla de jugadores -->
+  <!-- 📊 Contenedor dinámico para la tabla -->
   <div class="container">
-    <div class="table-responsive">
-      <table class="scorecard-table">
-        <thead>
-          <tr>
-            <th>POS</th>
-            <th>PLAYER</th>            
-            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-            <th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
-            <th>UNDER</th>
-            <th>TOTAL</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-jugadores">
-          <!-- Se llenará desde script.js -->
-        </tbody>
-      </table>
-    </div>
+    <!-- La tabla se generará dinámicamente con JavaScript -->
   </div>
 
   <script src="js/script.js"></script>

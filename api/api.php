@@ -4,8 +4,8 @@ header('Access-Control-Allow-Origin: *');
 
 // 🔐 Parámetros del torneo
 $round_id = $_GET['round_id'] ?? null;
-$event_id = "10733818833262361649";
-$tournament_id = "11025765214984354975";
+$event_id = $_GET['event_id'] ?? "10733818833262361649";
+$tournament_id = $_GET['tournament_id'] ?? "11025765214984354975";
 $token = "MGMlbTG_APORWozDtgXHdQ";
 
 // ⛔ Validación básica
@@ -20,14 +20,15 @@ $url = "https://www.golfgenius.com/api_v2/$token/events/$event_id/rounds/$round_
 // 🔄 Obtener datos desde Golf Genius
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-$response = curl_exec($ch);
 
- //URL PROD.
-// cURL para llamada segura
-// $ch = curl_init($url);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// $response = curl_exec($ch);
+// Para entornos locales (como XAMPP/WAMP), a menudo es necesario deshabilitar la verificación SSL.
+// En producción, esta verificación debe estar habilitada por seguridad.
+$local_hosts = ['localhost', '127.0.0.1'];
+if (isset($_SERVER['SERVER_NAME']) && in_array($_SERVER['SERVER_NAME'], $local_hosts)) {
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+}
+
+$response = curl_exec($ch);
 
 
 

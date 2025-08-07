@@ -1,0 +1,96 @@
+/* Estilos para columnas fijas durante scroll horizontal en móvil */
+
+/* Estilos para todos los tamaños de pantalla */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.scorecard-table {
+  border-collapse: separate; /* Necesario para z-index en columnas sticky */
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Columna POS - Fija para todos los dispositivos */
+.scorecard-table th:first-child,
+.scorecard-table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  background-color: inherit;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); 
+}
+
+.scorecard-table th:first-child {
+  z-index: 30 !important; /* Encima de todo */
+  background-color: #182a53 !important;
+}
+
+.scorecard-table td:first-child {
+  z-index: 20 !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Columna PLAYER - Fija para todos los dispositivos */
+.scorecard-table th:nth-child(2),
+.scorecard-table td:nth-child(2) {
+  position: sticky !important;
+  left: 45px !important; /* El ancho exacto de la columna POS */
+  background-color: inherit;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.scorecard-table th:nth-child(2) {
+  z-index: 29 !important; /* Menor que la primera columna pero mayor que el resto */
+  background-color: #182a53 !important;
+}
+
+.scorecard-table td:nth-child(2) {
+  z-index: 19 !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Optimizaciones específicas para móvil */
+@media (max-width: 767px) {
+  .table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+  }
+  
+  /* Mejoras para columna POS */
+  .scorecard-table th:first-child,
+  .scorecard-table td:first-child {
+    min-width: 45px !important;
+    max-width: 50px !important;
+    font-weight: 600 !important;
+    border-right: 2px solid #343a40 !important;
+    text-align: center !important;
+  }
+  
+  /* Mejoras para columna PLAYER */
+  .scorecard-table th:nth-child(2),
+  .scorecard-table td:nth-child(2) {
+    min-width: 140px !important;
+    max-width: 170px !important;
+    font-weight: 600 !important;
+    border-right: 2px solid #343a40 !important;
+    text-align: left !important;
+  }
+  
+  /* Ajuste z-index para garantizar visibilidad */
+  .scorecard-table thead {
+    z-index: 10 !important;
+  }
+  
+  /* Evitar problemas de superposición al hacer scroll */
+  .scorecard-table th:not(:first-child):not(:nth-child(2)),
+  .scorecard-table td:not(:first-child):not(:nth-child(2)) {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,22 @@
+/* Este archivo es para corregir los errores de llaves en el CSS */
+
+/* Corregir las llaves en el bloque de media queries */
+
+/* Corregir la media query que tiene una llave de cierre adicional */
+@media (min-width: 1900px) and (max-width: 1999px) {
+  /* Contenido de esta media query */
+}
+
+/* Verificar que todas las media queries estén correctamente cerradas */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Contenido de esta media query */
+}
+
+@media (max-width: 575px) {
+  /* Contenido de esta media query */
+}
+
+/* Última media query */
+@media (min-width: 2000px) {
+  /* Contenido de esta media query */
+}
